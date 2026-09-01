@@ -1,0 +1,22 @@
+<TargetEndpoint name="default">
+    <Description>
+        JSONPlaceholder Employee Backend
+    </Description>
+
+    <PreFlow />
+    <Flows />
+    <PostFlow />
+    <EventFlow />
+
+    <HTTPTargetConnection>
+        <URL>https://jsonplaceholder.typicode.com/users</URL>
+    </HTTPTargetConnection>
+
+
+    <FaultRules />
+    <DefaultFaultRule />
+
+    
+    <ScriptTarget />
+    <LocalTargetConnection />
+</TargetEndpoint>

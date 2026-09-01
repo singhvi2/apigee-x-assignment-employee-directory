@@ -6,13 +6,13 @@ This project implements an Employee Directory API using Google Cloud Apigee X.
 
 The implementation demonstrates API management concepts including:
 
-* API proxy creation
-* Traffic management
-* Security
-* Request/response mediation
-* Error handling
-* Debugging and analytics
-* Shared flows
+- API proxy creation
+- Traffic management
+- Security
+- Request/response mediation
+- Error handling
+- Debugging and analytics
+- Shared flows
 
 ## Implementation Approach
 
@@ -20,11 +20,11 @@ The project is developed incrementally in phases.
 
 Each phase contains:
 
-* implementation notes
-* configuration/policy files where applicable
-* screenshots/evidence
-* testing information
-* lessons learned
+- implementation notes
+- configuration/policy files where applicable
+- screenshots/evidence
+- testing information
+- lessons learned
 
 The purpose of this structure is to document the implementation process rather than only provide the final proxy bundle.
 
@@ -56,8 +56,8 @@ Base path:
 
 | Phase                                | Status      |
 | ------------------------------------ | ----------- |
-| Phase 00 — Project Setup             | In Progress |
-| Phase 01 — API Proxy Creation        | Not Started |
+| Phase 00 — Project Setup             | Done        |
+| Phase 01 — API Proxy Creation        | Done        |
 | Phase 02 — Traffic Management        | Not Started |
 | Phase 03 — Security                  | Not Started |
 | Phase 04 — Mediation                 | Not Started |
