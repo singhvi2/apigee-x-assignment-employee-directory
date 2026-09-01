@@ -1,0 +1,10 @@
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.BIN/
+.DS_Store
+
+# Apigee target/build artifacts if any
+target/
+*.zip
