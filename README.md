@@ -30,7 +30,6 @@ The purpose of this structure is to document the implementation process rather t
 
 ## Project Structure
 
-```text
 phase-00-project-setup/
 phase-01-api-proxy-creation/
 phase-02-traffic-management/
@@ -48,9 +47,8 @@ final-submission/
 
 Base path:
 
-```text
+
 /employee-directory/v1
-```
 
 ## Status
 
@@ -58,7 +56,7 @@ Base path:
 | ------------------------------------ | ----------- |
 | Phase 00 — Project Setup             | Done        |
 | Phase 01 — API Proxy Creation        | Done        |
-| Phase 02 — Traffic Management        | Not Started |
+| Phase 02 — Traffic Management        | InProgress  |
 | Phase 03 — Security                  | Not Started |
 | Phase 04 — Mediation                 | Not Started |
 | Phase 05 — Error Handling            | Not Started |

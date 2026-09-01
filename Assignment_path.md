@@ -33,3 +33,22 @@ proxy-bundles/
         ├── proxies/ # API proxy endpoints (inbound request handlers and default configurations)
         ├── targets/ # Target endpoints (outbound backend servers and default configurations)
         └── employee-directory-api-v1.xml # Main configuration file defining the API proxy bundle structure
+
+
+
+
+
+
+## Phase 2 — Traffic Management : 
+
+--> going to implement spikeArrest and QuotA  policy 
+apiproxy/
+├── employee-directory-api-v1.xml
+├── policies/
+│   ├── SpikeArrest.xml
+│   └── Quota.xml
+├── proxies/
+│   └── default.xml
+└── targets/
+    └── default.xml
+
