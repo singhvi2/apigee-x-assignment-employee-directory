@@ -12,51 +12,56 @@ The Apigee layer transforms this representation before returning it to the API c
 
 JSONPlaceholder returns fields including:
 
-* id
-* name
-* username
-* email
-* address
-* phone
-* website
-* company
+- id
+- name
+- username
+- email
+- address
+- phone
+- website
+- company
 
-[{
-  "id": 1,
-  "name": "Leanne Graham",
-  "username": "Bret",
-  "email": "Sincere@april.biz",
-  "address": {
-    "street": "Kulas Light",
-    "suite": "Apt. 556",
-    "city": "Gwenborough",
-    "zipcode": "92998-3874",
-    "geo": {
-      "lat": "-37.3159",
-      "lng": "81.1496"
+```json
+[
+  {
+    "id": 1,
+    "name": "Leanne Graham",
+    "username": "Bret",
+    "email": "Sincere@april.biz",
+    "address": {
+      "street": "Kulas Light",
+      "suite": "Apt. 556",
+      "city": "Gwenborough",
+      "zipcode": "92998-3874",
+      "geo": {
+        "lat": "-37.3159",
+        "lng": "81.1496"
+      }
+    },
+    "phone": "1-770-736-8031 x56442",
+    "website": "hildegard.org",
+    "company": {
+      "name": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
     }
-  },
-  "phone": "1-770-736-8031 x56442",
-  "website": "hildegard.org",
-  "company": {
-    "name": "Romaguera-Crona",
-    "catchPhrase": "Multi-layered client-server neural-net",
-    "bs": "harness real-time e-markets"
   }
-},...]
+]
+```
 
 ## Consumer Response
 
 The API exposes a simplified employee representation containing:
 
-* id
-* name
-* email
-* phone
-* company
+- id
+- name
+- email
+- phone
+- company
 
 The employees are returned inside an `employees` array.
 
+```json
 {
   "employees": [
     {
@@ -68,6 +73,7 @@ The employees are returned inside an `employees` array.
     }
   ]
 }
+```
 
 ## Implementation
 
@@ -94,27 +100,26 @@ jsc://TransformEmployeeResponse.js
 
 The transformation executes during the response flow.
 
-
 Client
-   |
-   | Request
-   v
+|
+| Request
+v
 ProxyEndpoint
-   |
-   v
+|
+v
 Traffic / Security Policies
-   |
-   v
+|
+v
 TargetEndpoint
-   |
-   v
+|
+v
 JSONPlaceholder
-   |
-   | Response
-   v
+|
+| Response
+v
 TransformEmployeeResponse
-   |
-   
+|
+
 Client
 
 ## Why Response Mediation?

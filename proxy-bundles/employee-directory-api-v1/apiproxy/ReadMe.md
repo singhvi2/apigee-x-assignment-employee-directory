@@ -1,3 +1,19 @@
+## Phase 05 — Error Handling
+
+-->We want our API to return controlled, useful errors instead of exposing raw Apigee/backend errors.
+VerifyAPIKey
+│
+│ invalid key
+▼
+Fault
+-->Apigee can then use:
+1.  FaultRules
+2.  DefaultFaultRule
+3.  fault variables
+4.  RaiseFault
+5.  policy-specific fault handling
+
+to control what the client receives.
 
 # Phase 04 — Mediation
 
@@ -13,61 +29,61 @@ The Apigee layer transforms this representation before returning it to the API c
 
 JSONPlaceholder returns fields including:
 
-* id
-* name
-* username
-* email
-* address
-* phone
-* website
-* company
+- id
+- name
+- username
+- email
+- address
+- phone
+- website
+- company
 
 [{
-  "id": 1,
-  "name": "Leanne Graham",
-  "username": "Bret",
-  "email": "Sincere@april.biz",
-  "address": {
-    "street": "Kulas Light",
-    "suite": "Apt. 556",
-    "city": "Gwenborough",
-    "zipcode": "92998-3874",
-    "geo": {
-      "lat": "-37.3159",
-      "lng": "81.1496"
-    }
-  },
-  "phone": "1-770-736-8031 x56442",
-  "website": "hildegard.org",
-  "company": {
-    "name": "Romaguera-Crona",
-    "catchPhrase": "Multi-layered client-server neural-net",
-    "bs": "harness real-time e-markets"
-  }
+"id": 1,
+"name": "Leanne Graham",
+"username": "Bret",
+"email": "Sincere@april.biz",
+"address": {
+"street": "Kulas Light",
+"suite": "Apt. 556",
+"city": "Gwenborough",
+"zipcode": "92998-3874",
+"geo": {
+"lat": "-37.3159",
+"lng": "81.1496"
+}
+},
+"phone": "1-770-736-8031 x56442",
+"website": "hildegard.org",
+"company": {
+"name": "Romaguera-Crona",
+"catchPhrase": "Multi-layered client-server neural-net",
+"bs": "harness real-time e-markets"
+}
 },...]
 
 ## Consumer Response
 
 The API exposes a simplified employee representation containing:
 
-* id
-* name
-* email
-* phone
-* company
+- id
+- name
+- email
+- phone
+- company
 
 The employees are returned inside an `employees` array.
 
 {
-  "employees": [
-    {
-      "id": 1,
-      "name": "Leanne Graham",
-      "email": "Sincere@april.biz",
-      "phone": "1-770-736-8031 x56442",
-      "company": "Romaguera-Crona"
-    }
-  ]
+"employees": [
+{
+"id": 1,
+"name": "Leanne Graham",
+"email": "Sincere@april.biz",
+"phone": "1-770-736-8031 x56442",
+"company": "Romaguera-Crona"
+}
+]
 }
 
 ## Implementation
@@ -95,27 +111,26 @@ jsc://TransformEmployeeResponse.js
 
 The transformation executes during the response flow.
 
-
 Client
-   |
-   | Request
-   v
+|
+| Request
+v
 ProxyEndpoint
-   |
-   v
+|
+v
 Traffic / Security Policies
-   |
-   v
+|
+v
 TargetEndpoint
-   |
-   v
+|
+v
 JSONPlaceholder
-   |
-   | Response
-   v
+|
+| Response
+v
 TransformEmployeeResponse
-   |
-   
+|
+
 Client
 
 ## Why Response Mediation?
@@ -135,17 +150,18 @@ The transformation logic can be independently tested against the JSONPlaceholder
 This phase demonstrates response mediation and the separation between the backend representation and the public API representation.
 
 The gateway can modify the response before it reaches the consumer while leaving the backend unchanged.
+
 ## Phase 03 — Security :
 
 --> implement VerifyAPIKey policy
 
 --> https://docs.cloud.google.com/apigee/docs/api-platform/develop/policy-attachment-and-enforcement?utm_source=chatgpt.com#bestpracticescommonpolicysets  
---> following policy order accordingly 
-## client should send like this : 
+--> following policy order accordingly
+
+## client should send like this :
+
 GET /v1/employees
 X-API-Key: abc123
-
-
 
 # Phase 03 — Security
 
@@ -160,44 +176,40 @@ The proxy uses the Apigee `VerifyAPIKey` policy.
 The API key is expected in the HTTP request header:
 X-API-Key
 
-
 ## Policy Configuration
 
 Policy: VerifyAPIKey
 API key location: request.header.X-API-Key
 
-
 ## Request Flow
 
-
 Client
-   |
-   | X-API-Key
-   v
+|
+| X-API-Key
+v
 ProxyEndpoint
-   |
-   v
+|
+v
 Spike Arrest
-   |
-   v
+|
+v
 Verify API Key
-   |
-   +---- Invalid / Missing
-   |          |
-   |          v
-   |        Fault
-   |
-   +---- Valid
-              |
-              v
-            Quota
-              |
-              v
-        TargetEndpoint
-              |
-              v
-        JSONPlaceholder
-
+|
++---- Invalid / Missing
+| |
+| v
+| Fault
+|
++---- Valid
+|
+v
+Quota
+|
+v
+TargetEndpoint
+|
+v
+JSONPlaceholder
 
 ## Why API Key Authentication?
 
@@ -210,7 +222,6 @@ The client must provide a key before the request is allowed to continue to the b
 The key is supplied using:
 
 X-API-Key
-
 
 rather than a query parameter.
 
@@ -234,41 +245,36 @@ The policy configuration has therefore been implemented and documented locally w
 
 ### Valid API key
 
-
 Client
-  |
-  | X-API-Key: valid-key
-  v
+|
+| X-API-Key: valid-key
+v
 VerifyAPIKey
-  |
-  v
+|
+v
 Request continues
-
 
 ### Missing API key
 
-
 Client
-  |
-  | No API key
-  v
+|
+| No API key
+v
 VerifyAPIKey
-  |
-  v
+|
+v
 Request rejected
-
 
 ### Invalid API key
 
 Client
-  |
-  | X-API-Key: invalid-key
-  v
+|
+| X-API-Key: invalid-key
+v
 VerifyAPIKey
-  |
-  v
+|
+v
 Request rejected
-
 
 ## Learning
 
@@ -277,7 +283,6 @@ The VerifyAPIKey policy performs API-key validation at the API gateway layer.
 The backend does not need to implement this validation itself.
 
 The policy also produces flow variables that can be used by subsequent policies, which is useful when implementing application-specific quotas and other gateway behaviour.
-
 
 ## 2. Verify API Key
 
@@ -313,9 +318,6 @@ VerifyAPIKey
 v
 Request rejected
 
-
-
-
 apigee-x-employee-directory-api/
 │
 ├── phase-00-project-setup/
@@ -323,32 +325,33 @@ apigee-x-employee-directory-api/
 ├── phase-01-api-proxy-creation/
 │
 ├── phase-02-traffic-management/
-│   ├── screenshots/
-│   ├── policies/
-│   │   ├── SpikeArrest.xml
-│   │   └── Quota.xml
-│   └── notes.md
+│ ├── screenshots/
+│ ├── policies/
+│ │ ├── SpikeArrest.xml
+│ │ └── Quota.xml
+│ └── notes.md
 │
 ├── phase-03-security/
-│   ├── screenshots/
-│   ├── policies/
-│   │   └── VerifyAPIKey.xml
-│   └── notes.md
+│ ├── screenshots/
+│ ├── policies/
+│ │ └── VerifyAPIKey.xml
+│ └── notes.md
 │
 ├── proxy-bundles/
-│   └── employee-directory-api-v1/
-│       └── apiproxy/
-│           ├── employee-directory-api-v1.xml
-│           ├── policies/
-│           │   ├── SpikeArrest.xml
-│           │   ├── Quota.xml
-│           │   └── VerifyAPIKey.xml
-│           ├── proxies/
-│           │   └── default.xml
-│           └── targets/
-│               └── default.xml
+│ └── employee-directory-api-v1/
+│ └── apiproxy/
+│ ├── employee-directory-api-v1.xml
+│ ├── policies/
+│ │ ├── SpikeArrest.xml
+│ │ ├── Quota.xml
+│ │ └── VerifyAPIKey.xml
+│ ├── proxies/
+│ │ └── default.xml
+│ └── targets/
+│ └── default.xml
 │
 └── ...
+
 ## Phase 2 — Traffic Management :
 
     --> we will implement  spikeArrest and Quota poilicy :
@@ -356,7 +359,6 @@ apigee-x-employee-directory-api/
     2.Quota  : Controls the total number of requests over a longer period.  ex : 100 requests / day
 
     --> implemnt to ProxyEndpoint flow pipeline in prflow -> Quota and sikeArrets
-
 
 ## Objective
 
@@ -375,7 +377,6 @@ Spike Arrest protects the backend from sudden bursts of traffic.
 
 ### Configuration
 
-
 Rate: 5 requests/second
 
 The policy is executed before the request is routed to the backend.
@@ -392,31 +393,28 @@ Limit: 100 requests
 Period: 1 day
 Identifier: client.ip
 
-
 ## Policy Flow
 
-
 Client
-   |   (via HttpProxyConnection)
-   v
+| (via HttpProxyConnection)
+v
 ProxyEndpoint
-   |
-   v
+|
+v
 PreFlow
-   |
-   +-- Spike Arrest
-   |
-   +-- Quota
-   |
-   v
+|
++-- Spike Arrest
+|
++-- Quota
+|
+v
 RouteRule
-   |    
-   v
+|  
+ v
 TargetEndpoint
-   |   (via HttpTargetConnection)
-   v
+| (via HttpTargetConnection)
+v
 JSONPlaceholder
-
 
 ## Why Both Policies?
 
@@ -432,23 +430,20 @@ The policies were created manually as Apigee policy XML files using VS Code.
 
 The policies were attached to the ProxyEndpoint PreFlow.
 
-
-
 ## Evidence
 
 The phase contains:
 
-* Spike Arrest policy XML
-* Quota policy XML
-* Updated ProxyEndpoint configuration
-* Policy flow documentation
+- Spike Arrest policy XML
+- Quota policy XML
+- Updated ProxyEndpoint configuration
+- Policy flow documentation
 
 ## Learning
 
 This phase demonstrates the difference between burst protection and overall usage control.
 
 Spike Arrest is primarily concerned with request rate, while Quota is concerned with accumulated request usage over a configured period.
-
 
 # Phase 01 — API Proxy Creation
 
