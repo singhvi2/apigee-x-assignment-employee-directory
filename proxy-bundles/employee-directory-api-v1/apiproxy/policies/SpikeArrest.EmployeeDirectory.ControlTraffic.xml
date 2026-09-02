@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SpikeArrest continueOnError="false" enabled="true"
+    name="SpikeArrest.EmployeeDirectory.ControlTraffic">
+
+    <DisplayName>Spike Arrest</DisplayName>
+
+    <Rate>5ps</Rate>
+
+    <!-- <Identifier ref="client.ip" /> -->
+
+</SpikeArrest>
+
+
+<!-- UseEffectiveCount :Determines whether rate limits are tracked locally per Message Processor
+(false) or synchronized globally across the region (true)   -->
+
+<!-- <Identifier>  : Specifies the custom variable (such as client IP, developer ID, or API key) used
+to uniquely track and isolate rate-limiting counts per client. -->
+
+<!-- <MessageWeight>  : Dynamically assigns a heavier transaction cost to specific requests (e.g.,
+resource-intensive queries counting as 5 requests instead of 1).-->
+
+<!-- <Rate>  : Defines the maximum allowed frequency of incoming requests (e.g., 50ps for 50 requests
+per second or 10pm for 10 per minute). -->

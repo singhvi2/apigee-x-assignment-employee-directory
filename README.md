@@ -41,7 +41,7 @@ phase-07-shared-flows/
 postman/
 proxy-bundles/
 final-submission/
-```
+
 
 ## API
 
@@ -62,3 +62,4 @@ Base path:
 | Phase 05 — Error Handling            | Not Started |
 | Phase 06 — Debug / Trace / Analytics | Not Started |
 | Phase 07 — Shared Flows              | Not Started |
+

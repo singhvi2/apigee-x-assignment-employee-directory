@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Quota continueOnError="false" enabled="true" name="Quota.EmployeeDirectory.DailyLimit">
+
+    <DisplayName>Daily Quota</DisplayName>
+
+    <Allow count="100" />
+
+    <Interval>1</Interval>
+
+    <Distributed>true</Distributed>
+
+    <Synchronous>true</Synchronous>
+
+    <TimeUnit>day</TimeUnit>
+
+    <!-- <Identifier ref="client.ip" /> -->
+
+</Quota>
+
+<!-- type : Determines how the quota counter resets (calendar for fixed schedules, rollingwindow for
+sliding periods) -->
+
+<!-- <Allow> : Specifies the maximum number of requests allowed within the quota time window -->
+
+<!-- <Interval> : Defines the numerical multiplier for the time unit duration -->
+
+<!-- <TimeUnit> : Sets the base time scale (minute, hour, day, week, month) for the quota reset
+cycle -->
+
+<!-- <Identifier> : Dynamically isolates and tracks quota counters separately per client or app -->
+
+<!-- <MessageWeight> : Dynamically assigns a heavier consumption weight to resource-intensive
+requests -->
+
+
+<!-- <Distributed> : Synchronizes quota counts across all Message Processors in a region -->
+
+<!-- <Synchronous> : Forces quota state updates to be written immediately rather than asynchronously -->

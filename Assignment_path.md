@@ -29,26 +29,26 @@
 --> updated code in main XML , proxies(default) , tagret(default);
 proxy-bundles/
 └── employee-directory-api-v1/
-    └── apiproxy/
-        ├── proxies/ # API proxy endpoints (inbound request handlers and default configurations)
-        ├── targets/ # Target endpoints (outbound backend servers and default configurations)
-        └── employee-directory-api-v1.xml # Main configuration file defining the API proxy bundle structure
+└── apiproxy/
+├── proxies/ # API proxy endpoints (inbound request handlers and default configurations)
+├── targets/ # Target endpoints (outbound backend servers and default configurations)
+└── employee-directory-api-v1.xml # Main configuration file defining the API proxy bundle structure
 
+## Phase 2 — Traffic Management :
 
-
-
-
-
-## Phase 2 — Traffic Management : 
-
---> going to implement spikeArrest and QuotA  policy 
+--> going to implement spikeArrest and QuotA policy
 apiproxy/
 ├── employee-directory-api-v1.xml
 ├── policies/
-│   ├── SpikeArrest.xml
-│   └── Quota.xml
+│ ├── SpikeArrest.xml
+│ └── Quota.xml
 ├── proxies/
-│   └── default.xml
+│ └── default.xml #$ implemented both policy in preflow
 └── targets/
-    └── default.xml
+└── default.xml
 
+--> we will implement spikeArrest and Quota poilicy :
+1.Spike Arrest : Protects the backend from sudden traffic bursts. ex : 5 requests / second
+2.Quota : Controls the total number of requests over a longer period. ex : 100 requests / day
+
+--> implemnt to ProxyEndpoint flow pipeline in prflow -> Quota and sikeArrets
