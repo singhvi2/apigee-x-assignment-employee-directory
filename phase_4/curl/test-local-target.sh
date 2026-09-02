@@ -1,0 +1,1 @@
+curl -i https://jsonplaceholder.typicode.com/users
