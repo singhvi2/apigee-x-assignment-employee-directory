@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage
+    async="false"
+    continueOnError="false"
+    enabled="true"
+    name="AssignMessage.EmployeeDirectory.GenericError">
+
+    <DisplayName>Generic API Error</DisplayName>
+
+    <Set>
+
+        <StatusCode>500</StatusCode>
+
+        <ReasonPhrase>Internal Server Error</ReasonPhrase>
+
+        <Headers>
+            <Header name="Content-Type">application/json</Header>
+        </Headers>
+
+        <Payload contentType="application/json">
+        {
+            "error": {
+                "code": "INTERNAL_ERROR",
+                "message": "An unexpected error occurred."
+            }
+        }
+        </Payload>
+
+    </Set>
+
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+
+</AssignMessage>

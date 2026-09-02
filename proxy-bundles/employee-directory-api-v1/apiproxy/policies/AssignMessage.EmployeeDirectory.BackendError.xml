@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage
+    async="false"
+    continueOnError="false"
+    enabled="true"
+    name="AssignMessage.EmployeeDirectory.BackendError">
+
+    <DisplayName>Backend Error</DisplayName>
+
+    <Set>
+
+        <StatusCode>502</StatusCode>
+
+        <ReasonPhrase>Bad Gateway</ReasonPhrase>
+
+        <Headers>
+            <Header name="Content-Type">application/json</Header>
+        </Headers>
+
+        <Payload contentType="application/json">
+        {
+            "error": {
+                "code": "BACKEND_UNAVAILABLE",
+                "message": "The employee service is currently unavailable."
+            }
+        }
+        </Payload>
+
+    </Set>
+
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+
+</AssignMessage>

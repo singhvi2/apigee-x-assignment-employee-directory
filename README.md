@@ -58,7 +58,7 @@ Target: https://jsonplaceholder.typicode.com/users
 | Phase 02 — Traffic Management        | Done        |
 | Phase 03 — Security                  | Done        |
 | Phase 04 — Mediation                 | Done        |
-| Phase 05 — Error Handling            | InProgress  |
+| Phase 05 — Error Handling            | Done        |
 | Phase 06 — Debug / Trace / Analytics | Not Started |
 | Phase 07 — Shared Flows              | Not Started |
 

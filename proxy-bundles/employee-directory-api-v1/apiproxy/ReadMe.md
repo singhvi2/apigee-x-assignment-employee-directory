@@ -15,6 +15,9 @@ Fault
 
 to control what the client receives.
 
+--> implemented all fault rule and default rule with Assinmessage and understand the flow of fault  in proxyEndpoint and tagertendPOint
+
+
 # Phase 04 — Mediation
 
 ## Objective

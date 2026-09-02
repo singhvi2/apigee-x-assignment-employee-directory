@@ -33,21 +33,47 @@ This provides a predictable response format for API consumers.
 
 ## Policies
 
-The following `RaiseFault` policies were created:
+phase-05-error-handling/
+│
+├── screenshots/
+│
+├── policies/
+│ ├── AssignMessage.EmployeeDirectory.InvalidApiKey.xml
+│ ├── AssignMessage.EmployeeDirectory.SpikeArrestViolation.xml
+│ ├── AssignMessage.EmployeeDirectory.QuotaExceeded.xml
+│ ├── AssignMessage.EmployeeDirectory.BackendError.xml
+│ └── AssignMessage.EmployeeDirectory.GenericError.xml
+│
+└── ReadMe.md
 
-
-RaiseFault.InvalidApiKey.xml
-RaiseFault.SpikeArrest.xml
-RaiseFault.Quota.xml
-RaiseFault.BackendError.xml
-RaiseFault.Generic.xml
-
+apiproxy/
+├── policies/
+│ ├── JavaScript.EmployeeDirectory.TransformEmployeeResponse.xml
+│ ├── Quota.EmployeeDirectory.DailyLimit.xml
+│ ├── SpikeArrest.EmployeeDirectory.ControlTraffic.xml
+│ ├── VerifyAPIKey.EmployeeDirectory.VerifyAPIKey.xml
+│ │
+│ ├── AssignMessage.EmployeeDirectory.InvalidApiKey.xml
+│ ├── AssignMessage.EmployeeDirectory.SpikeArrestViolation.xml
+│ ├── AssignMessage.EmployeeDirectory.QuotaExceeded.xml
+│ ├── AssignMessage.EmployeeDirectory.BackendError.xml
+│ └── AssignMessage.EmployeeDirectory.GenericError.xml
+│
+├── proxies/
+│ └── default.xml
+│
+├── resources/
+│ └── jsc/
+│ └── TransformEmployeeResponse.js
+│
+└── targets/
+  └── default.xml
 
 Each policy defines the appropriate HTTP status code, reason phrase, response headers, and JSON error payload.
 
 ## Error Handling Flow
 
-
+```text
 Client
    |
    v
@@ -75,137 +101,17 @@ Response Transformation
    |
    v
 Client
-
+```
 
 Unexpected faults are intended to be handled by the `DefaultFaultRule` and returned as a generic `500 Internal Server Error`.
 
-## Why Custom Error Responses?
-
-Returning a controlled error response prevents consumers from depending on internal gateway or backend implementation details.
-
-For example, instead of exposing a backend-specific failure, the API provides:
-
-```json
-{
-  "error": {
-    "code": "BACKEND_UNAVAILABLE",
-    "message": "The employee service is currently unavailable."
-  }
-}
-```
-
-This keeps the public API contract consistent even if the backend implementation changes.
-
-## Error Response Headers
-
-Custom error responses use:
-Content-Type: application/json
-
-This ensures that clients can consistently interpret the error payload as JSON.
+This keeps the public API contract consistent even if the backend implementation changes
 
 ## Fault Handling
 
 Apigee policy failures generate faults that can be handled through `FaultRules` and `DefaultFaultRule`.
 
 Specific fault conditions are intended to route to the corresponding custom error response, while the default fault rule provides a fallback for unexpected errors.
-
-## Implementation
-
-The error-handling configuration was created manually in VS Code as part of the Apigee proxy bundle.
-
-The actual policy files are maintained under:
-
-
-proxy-bundles/employee-directory-api-v1/apiproxy/policies/
-
-
-Documentation copies are maintained under:
-
-
-phase-05-error-handling/policies/
-
-
-## Runtime Limitation
-
-A live Apigee X runtime is not available for this assignment.
-
-Therefore, the fault policies cannot be triggered and verified through an actual deployed Apigee proxy.
-
-The XML configuration and expected runtime behavior are documented without claiming live Apigee execution.
-
-## Expected Behaviour
-
-### Invalid API Key
-
-
-Request
-   |
-   v
-VerifyAPIKey
-   |
-   v
-401 Unauthorized
-
-
-Response:
-
-```json
-{
-  "error": {
-    "code": "INVALID_API_KEY",
-    "message": "A valid API key is required."
-  }
-}
-```
-
-### Spike Arrest Violation
-
-
-Request
-   |
-   v
-SpikeArrest
-   |
-   v
-429 Too Many Requests
-
-
-### Quota Violation
-
-
-Request
-   |
-   v
-Quota
-   |
-   v
-429 Too Many Requests
-
-
-### Backend Failure
-
-
-Apigee
-   |
-   v
-Backend
-   X
-Failure
-   |
-   v
-502 Bad Gateway
-
-
-### Unexpected Error
-
-
-Unexpected Fault
-       |
-       v
-DefaultFaultRule
-       |
-       v
-500 Internal Server Error
 
 
 ## Learning
@@ -214,10 +120,10 @@ This phase demonstrates how API gateway faults can be handled separately from su
 
 The main concepts covered are:
 
-* `FaultRules`
-* `DefaultFaultRule`
-* `RaiseFault`
-* HTTP error status codes
-* Consistent JSON error contracts
-* Separation of internal errors from public API responses
-
+- `FaultRules`
+- `DefaultFaultRule`
+- `RaiseFault`
+- HTTP error status codes
+- Consistent JSON error contracts
+- Separation of internal errors from public API responses
+- Fault flow in proxyEndpoint and targetEndPOint

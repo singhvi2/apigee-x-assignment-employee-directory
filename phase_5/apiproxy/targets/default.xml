@@ -13,10 +13,24 @@
     </HTTPTargetConnection>
 
 
-    <FaultRules />
+    <FaultRules>
+
+        <FaultRule name="BackendError">
+
+            <Step>
+                <Name>AssignMessage.EmployeeDirectory.BackendError</Name>
+            </Step>
+
+            <Condition>
+                response.status.code >= 500
+            </Condition>
+
+        </FaultRule>
+
+    </FaultRules>
     <DefaultFaultRule />
 
-    
+
     <ScriptTarget />
     <LocalTargetConnection />
 </TargetEndpoint>

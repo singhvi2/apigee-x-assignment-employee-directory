@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage
+    async="false"
+    continueOnError="false"
+    enabled="true"
+    name="AssignMessage.EmployeeDirectory.InvalidApiKey">
+
+    <DisplayName>Invalid API Key</DisplayName>
+
+    <Set>
+
+        <StatusCode>401</StatusCode>
+
+        <ReasonPhrase>Unauthorized</ReasonPhrase>
+
+        <Headers>
+            <Header name="Content-Type">application/json</Header>
+        </Headers>
+
+        <Payload contentType="application/json">
+            {
+            "error": {
+            "code": "INVALID_API_KEY",
+            "message": "A valid API key is required."
+            }
+            }
+        </Payload>
+
+    </Set>
+
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+
+</AssignMessage>
+
+
+<!-- child element 
+ 
+<Add>
+<AssignTo>
+<AssignVariable>
+<Copy>
+<DisplayName>
+<IgnoreUnresolvedVariables>
+<Remove>
+<Set>
+-->
+
+
+<!-- 
+  <Add>
+  Used within AssignMessage (or similar transformation policies) to add key-value 
+  pairs, headers, query parameters, or form parameters to a request or response 
+  object without overwriting existing ones.
+-->
+
+
+<!-- 
+  <AssignTo>
+  Specifies the target variable or message context where the modified payload, 
+  header, or flow variable will be saved (e.g., saving to request, response, or 
+  a custom variable like request.header.Authorization).
+-->
+
+
+<!-- 
+  <AssignVariable>
+  Creates or sets the value of a custom flow variable. You specify a name for 
+  the variable and assign a literal value or extract it from another flow 
+  variable or expression.
+-->
+
+
+<!-- 
+  <Copy>
+  Copies parts of an incoming message (such as headers, query parameters, 
+  payload, or paths) from one context (like request) to another (like response 
+  or a backend target request).
+-->
+
+
+<!-- 
+  <DisplayName>
+  A metadata tag used to provide a human-readable, custom name for a policy or 
+  step configuration in the Apigee Edge UI and trace tool, rather than relying 
+  solely on the internal policy type name.
+-->
+
+
+<!-- 
+  <IgnoreUnresolvedVariables>
+  A boolean flag (true/false) used in policies to control behavior when a 
+  referenced flow variable cannot be resolved. If set to true, Apigee ignores 
+  the missing variable instead of throwing a runtime fault error.
+-->
+
+
+<!-- 
+  <Remove>
+  Used within an AssignMessage policy to delete specific elements from a 
+  message, such as removing specific headers, query parameters, form 
+  parameters, or payload fields.
+-->
+
+
+<!-- 
+  <Set>
+  Used within an AssignMessage policy to completely set or overwrite headers, 
+  query parameters, payload, or URL paths. If the item already exists, its 
+  value is replaced; if it does not exist, it is created.
+-->
