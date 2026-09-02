@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<VerifyAPIKey  continueOnError="false" enabled="true"
+    name="VerifyAPIKey.EmployeeDirectory.VerifyApiKey">
+
+    <DisplayName>Verify API Key</DisplayName>
+
+    <!-- <APIKey ref="request.queryparam.apike" /> -->
+    <APIKey ref="request.header.X-API-Key" />
+</VerifyAPIKey>
