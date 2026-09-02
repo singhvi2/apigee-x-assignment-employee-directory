@@ -12,8 +12,50 @@
     </HTTPProxyConnection>
 
 
-    <FaultRules />
-    <DefaultFaultRule />
+    <FaultRules>
+
+        <FaultRule name="InvalidApiKey">
+            <Step>
+                <Name>AssignMessage.EmployeeDirectory.InvalidApiKey</Name>
+            </Step>
+
+            <Condition>
+                fault.name = "InvalidApiKey"
+                or
+                fault.name = "FailedToResolveAPIKey"
+            </Condition>
+        </FaultRule>
+
+
+        <FaultRule name="QuotaExceeded">
+            <Step>
+                <Name>AssignMessage.EmployeeDirectory.QuotaExceeded</Name>
+            </Step>
+
+            <Condition>
+                fault.name = "QuotaViolation"
+            </Condition>
+        </FaultRule>
+
+
+        <FaultRule name="SpikeArrestViolation">
+            <Step>
+                <Name>AssignMessage.EmployeeDirectory.SpikeArrestViolation</Name>
+            </Step>
+
+            <Condition>
+                fault.name = "SpikeArrestViolation"
+            </Condition>
+        </FaultRule>
+
+    </FaultRules>
+
+    <DefaultFaultRule name="GenericError">
+        <Step>
+            <Name>AssignMessage.EmployeeDirectory.GenericError</Name>
+        </Step>
+    </DefaultFaultRule>
+
 
     <PreFlow name="preFlow">
         <Request>
