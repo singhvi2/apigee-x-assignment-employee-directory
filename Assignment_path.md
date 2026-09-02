@@ -102,4 +102,12 @@ apigee-x-employee-directory-api/
 
 # Phase 04 — Mediation : 
 
---> 
+--> implemented a js  logic to change mediate  the response accordingly to hide and add 
+--> then add that custom js logic to implemtn a js policy as : JavaScript.EmployeeDirectory.TransformEmployeeResponse.xml
+
+--> then add it in preProxyEndpoint  of req flow ; 
+
+--->then test the result via custum checks;
+
+
+

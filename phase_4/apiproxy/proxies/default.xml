@@ -29,7 +29,13 @@
             </Step>
 
         </Request>
-        <Response />
+
+        <Response>
+            <Step>
+                <Name>JavaScript.EmployeeDirectory.TransformEmployeeResponse</Name>
+            </Step>
+        </Response>
+
     </PreFlow>
 
     <Flows />

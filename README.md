@@ -58,7 +58,7 @@ Base path:
 | Phase 01 — API Proxy Creation        | Done        |
 | Phase 02 — Traffic Management        | Done        |
 | Phase 03 — Security                  | Done        |
-| Phase 04 — Mediation                 | InProgress  |
+| Phase 04 — Mediation                 | Done        |
 | Phase 05 — Error Handling            | Not Started |
 | Phase 06 — Debug / Trace / Analytics | Not Started |
 | Phase 07 — Shared Flows              | Not Started |
