@@ -1,0 +1,109 @@
+{
+  "info": {
+    "name": "Employee Directory - Apigee X",
+    "_postman_id": "employee-directory-apigee-x",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "apigee_host",
+      "value": "YOUR_APIGEE_HOST"
+    },
+    {
+      "key": "api_key",
+      "value": "YOUR_KEY"
+    }
+  ],
+  "item": [
+    {
+      "name": "Valid API Key",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://{{apigee_host}}/v1/employees?apikey={{api_key}}",
+          "protocol": "https",
+          "host": [
+            "{{apigee_host}}"
+          ],
+          "path": [
+            "v1",
+            "employees"
+          ],
+          "query": [
+            {
+              "key": "apikey",
+              "value": "{{api_key}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Missing API Key - Expected 401",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://{{apigee_host}}/v1/employees",
+          "protocol": "https",
+          "host": [
+            "{{apigee_host}}"
+          ],
+          "path": [
+            "v1",
+            "employees"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Spike Arrest Test - 10 Requests",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://{{apigee_host}}/v1/employees?apikey={{api_key}}",
+          "protocol": "https",
+          "host": [
+            "{{apigee_host}}"
+          ],
+          "path": [
+            "v1",
+            "employees"
+          ],
+          "query": [
+            {
+              "key": "apikey",
+              "value": "{{api_key}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Response Transformation",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://{{apigee_host}}/v1/employees?apikey={{api_key}}",
+          "protocol": "https",
+          "host": [
+            "{{apigee_host}}"
+          ],
+          "path": [
+            "v1",
+            "employees"
+          ],
+          "query": [
+            {
+              "key": "apikey",
+              "value": "{{api_key}}"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
