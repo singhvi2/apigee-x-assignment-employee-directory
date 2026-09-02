@@ -219,3 +219,19 @@ policies/
 ```
 
 -->
+
+## Phase 7 : ## creating Shared FLow :
+
+--> follow the strucure : https://docs.cloud.google.com/apigee/docs/api-platform/reference/shared-flow-bundle-configuration-reference#sharedflowbundlestructure
+
+--> understand the stucture :employee-directory-common-security.xml(root config), policies/,sharedflows/
+--> then write the root folder (base folder ) : SharedFlowBundle, description, policies, sharedflows(tells where is pipelines)
+--> implemented all policy from policies in sharedflows default.xml
+
+
+
+## write flowcallout in polices
+
+--> write flowCallout.EmployeeDirectory.ExecuteCommonSecurity.xml
+https://docs.cloud.google.com/apigee/docs/api-platform/reference/policies/flow-callout-policy#elements
+--> then in proxyEndpoint update the request to use flowcallout instead of calling each call this directly
