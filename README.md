@@ -56,8 +56,8 @@ Base path:
 | ------------------------------------ | ----------- |
 | Phase 00 — Project Setup             | Done        |
 | Phase 01 — API Proxy Creation        | Done        |
-| Phase 02 — Traffic Management        | InProgress  |
-| Phase 03 — Security                  | Not Started |
+| Phase 02 — Traffic Management        | Done        |
+| Phase 03 — Security                  | Done        |
 | Phase 04 — Mediation                 | Not Started |
 | Phase 05 — Error Handling            | Not Started |
 | Phase 06 — Debug / Trace / Analytics | Not Started |

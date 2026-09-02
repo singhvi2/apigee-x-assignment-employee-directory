@@ -15,13 +15,23 @@
     <FaultRules />
     <DefaultFaultRule />
 
-    <PreFlow>
+    <PreFlow name="PreFlow">
         <Request>
-            <Step>SpikeArrest.EmployeeDirectory.ControlTraffic</Step>
-            <Step>Quota.EmployeeDirectory.DailyLimit</Step>
+
+            <Step>
+                <Name>SpikeArrest.EmployeeDirectory.ControlTraffic</Name>
+            </Step>
+            <Step>
+                <Name>VerifyAPIKey.EmployeeDirectory.VerifyApiKey</Name>
+            </Step>
+            <Step>
+                <Name>Quota.EmployeeDirectory.DailyLimit</Name>
+            </Step>
+
         </Request>
         <Response />
     </PreFlow>
+
     <Flows />
     <PostFlow />
 

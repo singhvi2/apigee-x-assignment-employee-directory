@@ -52,3 +52,48 @@ apiproxy/
 2.Quota : Controls the total number of requests over a longer period. ex : 100 requests / day
 
 --> implemnt to ProxyEndpoint flow pipeline in prflow -> Quota and sikeArrets
+
+
+## Phase 03 — Security:
+
+-->  implement verify apiKey policy with objective  
+
+--> Requests without a valid API key should not be allowed to reach the backend.
+
+--> https://docs.cloud.google.com/apigee/docs/api-platform/develop/policy-attachment-and-enforcement?utm_source=chatgpt.com#bestpracticescommonpolicysets 
+
+--> following how policy should be arranged 
+
+apigee-x-employee-directory-api/
+│
+├── phase-00-project-setup/
+│
+├── phase-01-api-proxy-creation/
+│
+├── phase-02-traffic-management/
+│   ├── screenshots/
+│   ├── policies/
+│   │   ├── SpikeArrest.xml
+│   │   └── Quota.xml
+│   └── notes.md
+│
+├── phase-03-security/
+│   ├── screenshots/
+│   ├── policies/
+│   │   └── VerifyAPIKey.xml
+│   └── notes.md
+│
+├── proxy-bundles/
+│   └── employee-directory-api-v1/
+│       └── apiproxy/
+│           ├── employee-directory-api-v1.xml
+│           ├── policies/
+│           │   ├── SpikeArrest.xml
+│           │   ├── Quota.xml
+│           │   └── VerifyAPIKey.xml
+│           ├── proxies/
+│           │   └── default.xml
+│           └── targets/
+│               └── default.xml
+│
+└── ...
