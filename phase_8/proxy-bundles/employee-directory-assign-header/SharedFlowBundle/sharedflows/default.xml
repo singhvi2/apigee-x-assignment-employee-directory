@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlow name="default">
+
+    <PreFlow name="PreFlow">
+
+        <Request>
+
+            <Step>
+                <Name>AssignMessage.EmployeeDirectory.AssignHeader</Name>
+            </Step>
+
+        </Request>
+
+        <Response />
+
+    </PreFlow>
+
+    <Flows />
+
+    <PostFlow />
+
+</SharedFlow>

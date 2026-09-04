@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage
+    
+    continueOnError="false"
+    enabled="true"
+    name="AssignMessage.EmployeeDirectory.SpikeArrestViolation">
+
+    <DisplayName>Spike Arrest Violation</DisplayName>
+
+    <Set>
+
+        <StatusCode>429</StatusCode>
+
+        <ReasonPhrase>Too Many Requests</ReasonPhrase>
+
+        <Headers>
+            <Header name="Content-Type">application/json</Header>
+        </Headers>
+
+        <Payload contentType="application/json">
+        {
+            "error": {
+                "code": "RATE_LIMIT_EXCEEDED",
+                "message": "Request rate exceeded. Please try again later."
+            }
+        }
+        </Payload>
+
+    </Set>
+
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+
+</AssignMessage>

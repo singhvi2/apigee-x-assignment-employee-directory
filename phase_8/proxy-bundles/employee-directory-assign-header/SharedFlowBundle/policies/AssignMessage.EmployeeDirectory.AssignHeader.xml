@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage name="AssignMessage.EmployeeDirectory.AssignHeader">
+
+    <DisplayName>AssignMessage.EmployeeDirectory.AssignHeader</DisplayName>
+
+    <Set>
+        <Headers>
+            <Header name="X-Source">Employee-Directory</Header>
+        </Headers>
+    </Set>
+
+    <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+
+    <AssignTo createNew="false" transport="http" type="request" />
+
+</AssignMessage>

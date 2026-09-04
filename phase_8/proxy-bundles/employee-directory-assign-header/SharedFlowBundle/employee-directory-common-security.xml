@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SharedFlowBundle name="employee-directory-common-security">
+    <Description>
+        Adding header 
+    </Description>
+    <DisplayName>Employee Directory Assign Header </DisplayName>
+    <SharedFlows>
+        <SharedFlow>default</SharedFlow>
+    </SharedFlows>
+</SharedFlowBundle>
+
+
+<!-- SharedFlowBundle is name of primary folder 
+ 
+A shared flow bundle configuration consists of the following contents:
+
+Base configuration : 	Primary configuration settings.
+Policies  : 	XML-formatted configuration files that conform to the Apigee policy schemas.
+Resources : Scripts, JAR files, and XSLT files referenced by policies to execute custom logic.
+Shared flows : 	Shared flows included in this bundle.
+
+-->

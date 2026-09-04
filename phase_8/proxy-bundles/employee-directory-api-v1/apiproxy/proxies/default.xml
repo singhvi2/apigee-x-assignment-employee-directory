@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+    <Description>
+        Public endpoint for Employee Directory API v1
+    </Description>
+
+    <HTTPProxyConnection>
+        <BasePath>/v1/employees</BasePath>
+        <Properties>
+            <Property name="request.payload.parse.limit">30M</Property>
+        </Properties>
+    </HTTPProxyConnection>
+
+
+    <FaultRules>
+
+        <FaultRule name="InvalidApiKey">
+            <Step>
+                <Name>AssignMessage.EmployeeDirectory.InvalidApiKey</Name>
+            </Step>
+
+            <Condition>
+                fault.name = "InvalidApiKey"
+                or
+                fault.name = "FailedToResolveAPIKey"
+            </Condition>
+        </FaultRule>
+
+
+        <FaultRule name="QuotaExceeded">
+            <Step>
+                <Name>AssignMessage.EmployeeDirectory.QuotaExceeded</Name>
+            </Step>
+
+            <Condition>
+                fault.name = "QuotaViolation"
+            </Condition>
+        </FaultRule>
+
+
+        <FaultRule name="SpikeArrestViolation">
+            <Step>
+                <Name>AssignMessage.EmployeeDirectory.SpikeArrestViolation</Name>
+            </Step>
+
+            <Condition>
+                fault.name = "SpikeArrestViolation"
+            </Condition>
+        </FaultRule>
+
+    </FaultRules>
+
+    <DefaultFaultRule name="GenericError">
+        <Step>
+            <Name>AssignMessage.EmployeeDirectory.GenericError</Name>
+        </Step>
+    </DefaultFaultRule>
+
+
+    <PreFlow name="preFlow">
+        <Request>
+            <Step>
+                <Name>SpikeArrest.EmployeeDirectory.ControlTraffic</Name>
+            </Step>
+            <Step>
+                <Name>Quota.EmployeeDirectory.DailyLimit</Name>
+            </Step>
+            <Step>
+                <Name>VerifyAPIKey.EmployeeDirectory.VerifyApiKey</Name>
+            </Step>
+            <Step>
+                <Name>FlowCallout.EmployeeDirectory.AssignHeader</Name>
+            </Step>
+        </Request>
+
+        <Response>
+            <Step>
+                <Name>JavaScript.EmployeeDirectory.TransformEmployeeResponse</Name>
+            </Step>
+        </Response>
+
+    </PreFlow>
+    <Flows />
+    <PostFlow />
+
+
+    <RouteRule name="default">
+        <TargetEndpoint>default</TargetEndpoint>
+    </RouteRule>
+
+</ProxyEndpoint>
